@@ -1,4 +1,6 @@
-import json
+"""
+Flask is used to render a web page
+"""
 from flask import Flask, render_template, request
 from EmotionDetector.emotion_detection import emotion_detector
 
@@ -6,6 +8,7 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 def show_emotion_detector():
+    """Calls the emotion_detector module to analyze the given text"""
     statement = request.args.get("textToAnalyze")
     resp = emotion_detector(statement)
 
@@ -18,9 +21,10 @@ def show_emotion_detector():
      f" The dominant emotion is {resp['dominant_emotion']}."
     return return_string
 
-@app.route("/") 
-def render_index_page(): 
-    return render_template('index.html') 
+@app.route("/")
+def render_index_page():
+    """Renders the index page"""
+    return render_template('index.html')
 
-if __name__ == "__main__": 
-    app.run(host="0.0.0.0", port=5000) 
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
