@@ -1,1 +1,3 @@
-# Repository for final project
+# AI Application with Python & Flask
+
+
